@@ -1,8 +1,9 @@
 #include <unistd.h>
 
+// prototype de la fonction ft_putchar
 void ft_putchar(char c);
 
-// test fonction avec le main
+// test de la fonction ft_putchar via multiples appels dans la fonction main
 int main(void) {
     ft_putchar('a');
     ft_putchar('b');
@@ -14,7 +15,7 @@ int main(void) {
     return 0;
 }
 
-// implémentation fonction
+// implémentation de la fonction ft_putchar
 void ft_putchar(char c) {
     write(1, &c, 1);
 
