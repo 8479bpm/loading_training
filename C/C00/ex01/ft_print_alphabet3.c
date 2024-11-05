@@ -11,10 +11,10 @@ int main(void) {
 void ft_print_alphabet(void) {
 
     // code ASCII de 'a' = 97;
-    char letters = 97;
+    char letters = 'a';
 
     // utilisation boucle while pour itérer de 97 ('a') à 122 ('z')
-    while (letters <= 122) {
+    while (letters <= 'z') {
         write(1, &letters, 1); 
         letters++;  
     } 

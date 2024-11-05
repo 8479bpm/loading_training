@@ -11,8 +11,8 @@ int main(void) {
 
 // implémentation de la fonction
 void ft_print_alphabet(void) {
-    int letters = 122;
-    while(letters >= 97) {
+    char letters = 'z';
+    while(letters >= 'a') {
         write(1, &letters, 1);
         letters--;
     }
