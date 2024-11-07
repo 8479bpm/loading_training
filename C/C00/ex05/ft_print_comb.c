@@ -17,6 +17,7 @@ void ft_print_comb(void) {
             while (i <= 7) 
         {
             // j commence à i+1
+            // Les boucles doivent être imbriquées
             j = i + 1;
 
             // La boucle sur j : de i+1 à 8

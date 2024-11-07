@@ -19,7 +19,7 @@ void ft_print_comb2(void) {
     y = x+1;
 
     while (y <= 99) {
-
+        // on récupère les chiffres des dizaines par division et les unités par modulo
         char a = (x / 10) + '0';
         char b = (x % 10) + '0';
         char c = (y / 10) + '0';

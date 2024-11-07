@@ -10,6 +10,7 @@ int main(void) {
     return 0;
 }
 
+// WIP
 void ft_putnbr(int nb) {
 
     char dizaine = (nb/10) + '0';

@@ -12,7 +12,7 @@ int main(void) {
     return 0;
 }
 
-// on ne peut pas utiliser 'N', 'P' car ce ne sont pas des pointeurs, write attend des pointeurs
+// on ne peut pas utiliser 'N', 'P' car ce ne sont pas des pointeurs, write attend des pointeurs. Avec "", on envoit une chaine de charactères, donc un pointeur vers la première case d'un tableau
 void ft_is_negative(int n) {
         if (n < 0) {
             write(1, "N", 1);

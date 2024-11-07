@@ -11,7 +11,7 @@ void ft_print_alphabet(void) {
 
     /* on utilise une variable pour stocker la valeur initiale 'a' à partir de laquelle on itère, 
     elle va être convertie par le compilateur en sa valeur ASCII, 
-    on pourrait utiliser cette valeur numérique également pour itérer */
+    on pourrait utiliser cette valeur numérique également pour itérer (a = 97). */
     char letters = 'a';
 
     // utilisation boucle while pour itérer de 97 ('a') à 122 ('z')
