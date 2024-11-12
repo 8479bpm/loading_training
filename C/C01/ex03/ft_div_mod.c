@@ -1,30 +1,27 @@
-#include <stdio.h>
+#include <stdio.h> 
 
 void ft_div_mod(int a, int b, int *div, int *mod);
 
 
 int main(void) {
 
-    
+    int nombreA = 2;
+    int nombreB = 4;
+    int division = 0;
+    int modulo = 0;
 
-    int num1 = 4;
-    int num2 = 2;
-    int divResult = 0;
-    int modResult = 0;
-    printf(" num1 %d, num2 %d, divResult %d, modResult %d", num1, num2, divResult, modResult);
+    printf("Nombre A: %d, nombre B: %d, division: %d, modulo: %d", nombreA, nombreB, division, modulo);
 
+    ft_div_mod(nombreA, nombreB, &division, &modulo);
 
-    
+    printf("Nombre A: %d, nombre B: %d, division: %d, modulo: %d", nombreA, nombreB, division, modulo);
 
-    ft_div_mod(num1, num2, &divResult, &modResult);
-    printf(" num1 %d, num2 %d, divResult %d, modResult %d", num1, num2, divResult, modResult);
     return 0;
 }
 
-
 void ft_div_mod(int a, int b, int *div, int *mod) {
 
+    *div = a/b;
+    *mod = a%b; 
 
-    *div = (a/b);
-    *mod = (a%b);
 }
