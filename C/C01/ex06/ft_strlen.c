@@ -1,22 +1,29 @@
 #include <stdio.h>
+#include <unistd.h>
 
 int ft_strlen(char *str);
 
 int main(void) {
-    char *test = "Salut je suis un test";
-    int length = ft_strlen(test);
-    printf("La longueur de la chaîne est : %d\n", length);
+
+    // ne pas mettre le charactère '/n' sinon il sera compté par la fonction
+    char *test1 = "je suis un test.";
+    char *test2 = "et moi aussi mais je suis beaucoup beaucoup plus long.";
+
+    // on est obligé de capturer le retour de la fonction ft_strlen dans une varible pour pouvoir l'afficher et le contrôler
+    int testA = ft_strlen(test1);
+    printf("Je mesure: %d \n", testA);
+    int testB = ft_strlen(test2);
+    printf("Je mesure: %d\n", testB);
+    
     return 0;
 }
 
 int ft_strlen(char *str) {
     int compteur = 0;
-    
-    // Parcours de la chaîne jusqu'à atteindre le caractère nul '\0'
-    while (*str != '\0') {
-        compteur++;  // Incrémente compteur pour chaque caractère
-        str++;       // Passe au caractère suivant
+    int index = 0;
+    while (str[index] != '\0') {
+            compteur++;
+            index++;
     }
-    
     return compteur;
-}
+} 
