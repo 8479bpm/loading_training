@@ -19,11 +19,9 @@ int main(void) {
 }
 
 int ft_strlen(char *str) {
-    int compteur = 0;
-    int index = 0;
+    int index = 0; // sert pour parcourir l'index ET comme compteur
     while (str[index] != '\0') {
-            compteur++;
             index++;
     }
-    return compteur;
+    return index;
 } 
