@@ -1,6 +1,15 @@
 #include <stdio.h>
 #include <unistd.h>
 
+void ft_ft(int *nbr);
+void ft_ultimate_ft(int *********nbr);
+void ft_swap(int *a, int *b);
+void ft_div_mod(int a, int b, int *div, int *mod);
+void ft_ultimate_div_mod(int *a, int *b);
+int longueur(char *str);
+void ft_putstr(char *str);
+int ft_strlen(char *str);
+
 // exercice0
 void ft_ft(int *nbr) {
     *nbr = 42;
@@ -38,7 +47,6 @@ void ft_putstr(char *str) {
     write(1, str, longueur(str));
 }
 
-// exercice6
 int longueur(char *str) {
     int index = 0;
     while (str[index] != '\0'){
@@ -47,7 +55,7 @@ int longueur(char *str) {
     return index;
 }
 
-// exercice7
+// exercice6
 int ft_strlen(char *str) {
     int index = 0;
     while (str[index] != '\0') {
@@ -118,6 +126,10 @@ int main(void) {
     int captureDuResultat2 = ft_strlen(chaine5);
     printf("il y a %d caractères dans la chaine\n", captureDuResultat);
     printf("il y a %d caractères dans la chaine\n", captureDuResultat2);    
+
+    printf("exercice7\n"); 
+
+    printf("exercice8\n"); 
     
     return 0;
 }

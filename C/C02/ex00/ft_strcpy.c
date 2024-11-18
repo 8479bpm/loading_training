@@ -4,7 +4,7 @@ char *ft_strcpy(char *dest, char *src);
 
 int main(void) {
     char phrase1[50] = "je suis un test";
-    char * phrase2 = " moi aussi";
+    char phrase2[0] = " moi aussi";
 
     printf("phrase1: %s, phrase2: %s", phrase1, phrase2);
 
@@ -24,6 +24,29 @@ int main(void) {
     }
     return dest;
 }
+
+
+
+autre 
+
+
+
+char *ft_strcpy(char *dest, const char *src) {
+    char *d = dest;  // On garde une copie du pointeur original de `dest`
+    
+    // On copie chaque caractère de `src` dans `dest` jusqu'à la fin de la chaîne
+    while (*src != '\0') {
+        *d = *src;  // On copie le caractère de src dans dest
+        d++;         // On déplace le pointeur `d` pour le prochain caractère
+        src++;       // On déplace le pointeur `src` pour le prochain caractère
+    }
+    
+    *d = '\0';  // On termine la chaîne de caractères dans `dest`
+    
+    // On retourne le pointeur original `dest`, pas le pointeur déplacé `d`
+    return dest;
+}
+
  */
 
 char *ft_strcpy(char *dest, char *src)
