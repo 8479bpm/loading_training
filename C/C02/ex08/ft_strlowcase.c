@@ -8,7 +8,7 @@ char    *ft_strlowcase(char *str) {
     index = 0;
     while(str[index] != '\0') {
         if (str[index] >= 'A' && str[index] <= 'Z') {
-            str[index] = str[index] + ('a' - 'A');
+            str[index] = str[index] + 'a' - 'A';
         } 
             index++;
     }       return str;
