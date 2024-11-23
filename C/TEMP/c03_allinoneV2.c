@@ -12,6 +12,7 @@ int     ft_str_is_uppercase(char *str);
 int     ft_str_is_printable(char *str);
 char    *ft_strupcase(char *str);
 char    *ft_strlowcase(char *str);
+char    *ft_strcapitalize(char *str);
 
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -149,6 +150,34 @@ char    *ft_strlowcase(char *str) {
             return originalPointer;
 }
 
+// exercice 9
+char    *ft_strcapitalize(char *str) {
+    int     count;
+    char    *originalStr;
+
+    count = 1;
+    originalStr = str;
+    while(*str != '\0') {
+    // printf("CHECK -- count:%d, str:%c\n", count, *str);    
+        if(count && (*str >= 'a' && *str <= 'z')) {
+            *str = *str - ('a'- 'A');  
+            count = 0;
+        } else if (!count && (*str >= 'A' && *str <= 'Z'))  {
+            *str = *str + ('a' - 'A');
+        }
+
+          if(!(*str >= 'a' && *str <= 'z') && !(*str >= 'A' && *str <= 'Z')) {
+            count = 1;
+          } 
+          str++;
+         
+        }
+        
+        return originalStr;
+         
+    }
+
+
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 int     main(void) {
@@ -229,6 +258,7 @@ int     main(void) {
     printf("C22:%s\n", chaine22);
     printf("C23:%s\n", chaine23);
 
+    // exercice8
     printf("exercice8\n");
     char    chaine24[] = "b34\t5T"; 
     char    chaine25[] = "HellO"; 
@@ -239,6 +269,14 @@ int     main(void) {
     printf("C21:%s\n", chaine24);
     printf("C22:%s\n", chaine25);
     printf("C23:%s\n", chaine26);
+
+    // exercice9
+    printf("exercice9\n");
+    char    chaine27[] = "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un";
+    printf("C27 avant:%s\n", chaine27);
+    ft_strcapitalize(chaine27);
+    printf("C27 après:%s\n", chaine27);
+
 
     // -----------------------------------------------------------------------------------------------
     return 0;

@@ -10,6 +10,9 @@ int     ft_str_is_uppercase(char *str);
 int     ft_str_is_printable(char *str);
 char    *ft_strupcase(char *str);
 char    *ft_strlowcase(char *str);
+char    *ft_strcapitalize(char *str);
+unsigned int    ft_strlcpy(char *dest, char *src, unsigned int size);
+
 
 
 
@@ -162,8 +165,50 @@ char    *ft_strlowcase(char *str) {
     return str;
 }
 
+// exercice 9
+char    *ft_strcapitalize(char *str) {
+    int     index;
+    int     count;
+
+    index = 0;
+    count = 1;
+    while(str[index] != '\0') {
+            // printf("index: %d, char: '%c', count: %d\n", index, str[index], count);
+        
+        if(count && (str[index] >= 'a' && str[index] <= 'z')) {
+            // printf("  - Capitalizing '%c'\n", str[index]);
+            str[index] = str[index] - ('a'- 'A'); 
+            count = 0;
+        }   
+        else if (!count && (str[index] >= 'A' && str[index] <= 'Z')) {
+            // printf("  - Lowercasing '%c'\n", str[index]);
+            str[index] = str[index] + ('a' - 'A');
+        }
+
+        if(!(str[index] >= 'a' && str[index] <= 'z') && !(str[index] >= 'A' && str[index] <= 'Z')) {
+            // printf("  - Found separator: '%c', count reset\n", str[index]);
+            count = 1;
+    }
+            // printf("  Updated string: %s\n", str);
+            index++; 
+        }
+        return str;
+    }
+
+    // exercice 10
+    unsigned int ft_strlcpy(char *dest, char *src, unsigned int size) {
+        int     index = 0;
+        while(src[index] != '\0') {
+            if(index < size - 1) {
+                dest[index] = src[index];
+            }
+            index++;
+        }
+            return dest;
+    }
 
 
+            
 
 
 // -------------------------------------------------------------------------------------------------------
@@ -270,9 +315,17 @@ int     main(void) {
     printf("C22:%s\n", chaine25);
     printf("C23:%s\n", chaine26);
 
+    // exercice9
+    printf("exercice9\n");
+    char    chaine27[] = "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un";
+    printf("C27 avant:%s\n", chaine27);
+    ft_strcapitalize(chaine27);
+    printf("C27 après:%s\n", chaine27);
+
+
     // ------------------------------------------------------------------------------------------------
     return 0;
-
+    
 
 }
 
