@@ -197,16 +197,33 @@ char    *ft_strcapitalize(char *str) {
 
     // exercice 10
     unsigned int ft_strlcpy(char *dest, char *src, unsigned int size) {
-        int     index = 0;
-        while(src[index] != '\0') {
-            if(index < size - 1) {
-                dest[index] = src[index];
-            }
-            index++;
-        }
-            return dest;
-    }
+        // retourner la longueur de la chaine
+        unsigned int     length;
+        unsigned int     index;
 
+        length = 0;
+        index = 0;
+
+         while(src[length] != '\0') {
+            length++;
+        }
+
+          // Si size == 0, on ne copie rien, mais on retourne la longueur de la chaîne source
+        if (size == 0) {
+            return length;
+        }
+
+        while(src[index] != '\0' && index < size - 1) {
+            dest[index] = src[index];
+            index ++;
+        }
+
+        dest[index] = '\0';
+
+      
+        return length;
+
+    }
 
             
 
@@ -321,6 +338,18 @@ int     main(void) {
     printf("C27 avant:%s\n", chaine27);
     ft_strcapitalize(chaine27);
     printf("C27 après:%s\n", chaine27);
+
+    // exercice10
+    printf("exercice10\n");
+    char    chaine28[30] = "";
+    char    chaine29[] = "Copie moi dans la destination meme si je suis trop longue";
+    int     retourFt = ft_strlcpy(chaine28, chaine29, 14);
+    unsigned int size = 14;
+    printf("C28 avant:%s C29 avant:%s\n", chaine28, chaine29);
+    ft_strlcpy(chaine28, chaine29, 14);
+    printf("C28 après:%s C29 après:%s\n", chaine28, chaine29);
+    printf("Longueur SRC : %d", retourFt);
+
 
 
     // ------------------------------------------------------------------------------------------------

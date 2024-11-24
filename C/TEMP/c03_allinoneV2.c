@@ -13,6 +13,8 @@ int     ft_str_is_printable(char *str);
 char    *ft_strupcase(char *str);
 char    *ft_strlowcase(char *str);
 char    *ft_strcapitalize(char *str);
+unsigned int    ft_strlcpy(char *dest, char *src, unsigned int size);
+
 
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -177,6 +179,42 @@ char    *ft_strcapitalize(char *str) {
          
     }
 
+    // exercice 10
+    unsigned int ft_strlcpy(char *dest, char *src, unsigned int size) {
+    unsigned int length = 0;
+    char *src_ptr = src;  // Pointeur pour parcourir la chaîne source
+    char *dest_ptr = dest;  // Pointeur pour parcourir la chaîne destination
+
+    // Calculer la longueur de la chaîne source
+    while (*src_ptr != '\0') {
+        length++;
+        src_ptr++;
+    }
+
+    // Si size == 0, on ne copie rien et on retourne la longueur de la chaîne source
+    if (size == 0) {
+        return length;
+    }
+
+    // Réinitialiser le pointeur dest pour la copie
+    src_ptr = src;
+
+    // Copier les caractères de src vers dest jusqu'à size - 1
+    while (*src_ptr != '\0' && size > 1) {
+        *dest_ptr = *src_ptr;
+        dest_ptr++;
+        src_ptr++;
+        size--;
+    }
+
+    // Ajouter le caractère nul de fin à dest
+    *dest_ptr = '\0';
+
+    // Retourner la longueur de la chaîne source
+    return length;
+}
+
+
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -277,6 +315,19 @@ int     main(void) {
     ft_strcapitalize(chaine27);
     printf("C27 après:%s\n", chaine27);
 
+    // exercice10
+    printf("exercice10\n");
+    char chaine28[30] = "";  // Chaîne de destination vide
+    char chaine29[] = "Copie moi dans la destination meme si je suis trop longue";  // Chaîne source
+    unsigned int size = 14;  // Taille maximum de la copie (y compris le caractère nul)
+    int     retourFt = ft_strlcpy(chaine28, chaine29, 14);
+    // Affichage avant la copie
+    printf("C28 avant: '%s' C29 avant: '%s'\n", chaine28, chaine29);
+    // Appel à ft_strlcpy
+    ft_strlcpy(chaine28, chaine29, size);
+    // Affichage après la copie
+    printf("C28 après: '%s' C29 après: '%s'\n", chaine28, chaine29);
+    printf("Longueur SRC : %d", retourFt);
 
     // -----------------------------------------------------------------------------------------------
     return 0;
