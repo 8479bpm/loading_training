@@ -29,7 +29,7 @@ char *ft_strncat(char *dest, char *src, unsigned int nb) {
 
 
 int main(void) {
-    char chaine1[50] = "Je ";  // S'assurer que la chaîne est assez grande
+    char chaine1[50] = "Je";  // S'assurer que la chaîne est assez grande
     char chaine2[] = "suis une chaine concaténée.";
 
     // Concaténer les 3 premiers caractères de chaine2 à chaine1
