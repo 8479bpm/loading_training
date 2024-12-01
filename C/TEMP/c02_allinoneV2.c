@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <unistd.h>
 
+// Version avec des POINTEURS
+
 char    *ft_strcpy(char *dest, char *src);
 char    *ft_strncpy(char *dest, char *src, unsigned int n);
 int     ft_str_is_alpha(char *str);
@@ -15,220 +17,206 @@ unsigned int    ft_strlcpy(char *dest, char *src, unsigned int size);
 
 
 
-
-// -----------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 // exercice0
 char    *ft_strcpy(char *dest, char *src) {
-    int     index;
-    index = 0;
+    // on save la valeur originale de dest, après l'incrémentation de dest, nous ne sommes plus au début de la chaine mais à la fin. strcpy return le début de la chaine dest.
+    char    *originalDest = dest;
 
-    while(src[index] != '\0') {
-        dest[index] = src[index];
-        index++;
+    while(*src != '\0') {
+        *dest = *src;
+        src++;
+        dest++;
     }
-        dest[index] = '\0';
-        return dest;
+        *dest = '\0';
+        return originalDest;
 }
 
 // exercice1
 char    *ft_strncpy(char *dest, char *src, unsigned int n) {
-    int     index;
-    index = 0;
+    char    *originalDest = dest;
+    unsigned int    index = 0;
 
-    while(index < n && src[index] != '\0') {
-        dest[index] = src[index];
+    while(*src != '\0' && index < n) {
+        *dest = *src;
+        src++;
+        dest++;
         index++;
     }
 
     while(index < n) {
-        dest[index] = '\0';
+        *dest = '\0';
+        dest++;
         index++;
     }
-        return dest;
-
+    return originalDest;
 }
 
 // exercice2
 int     ft_str_is_alpha(char *str) {
-    int     index;
-
-    index = 0;
-
-    if(str[0] == '\0') {
+    if(*str == '\0') {
         return 1;
     }
 
-    while(str[index] != '\0') {
-        if(!((str[index] >= 'A' && str[index] <= 'Z') || (str[index] >= 'a' && str[index] <= 'z'))) {
+    while(*str != '\0') {
+        if(!((*str >= 'A' && *str <= 'Z') || (*str >= 'a' && *str <= 'z'))) {
             return 0;
         }
-            index ++;
+            str++;
     }
-            return 1;       
-}
+            return 1;
+}           
 
 // exercice3
 int     ft_str_is_numeric(char *str) {
-    int     index;
-
-    index = 0;
-    if(str[index] == '\0') {
+    if(*str == '\0') {
         return 1;
     }
 
-    while(str[index] != '\0') {
-        if(!(str[index] >= '0' && str[index] <= '9')) {
+    while(*str != '\0') {
+        if(!(*str >= '0' && *str <= '9')) {
             return 0;
         }
-            index++;
+            str++;
     }   
             return 1;
 }
 
 // exercice4
 int     ft_str_is_lowercase(char *str) {
-    int     index;
-
-    index = 0;
-    if(str[index] == '\0') {
+    if(*str == '\0') {
         return 1;
-}
-    while(str[index] != '\0') {
-        if(!(str[index] >= 'a' && str[index] <= 'z')) {
+    }
+
+    while(*str != '\0') {
+        if(!(*str >= 'a' && *str <= 'z')) {
             return 0;
         }
-        index++;
+            str++;
     }
-        return 1;
+            return 1;
 }
 
 // exercice5
 int     ft_str_is_uppercase(char *str) {
-        int     index;
-
-    index = 0;
-    if(str[index] == '\0') {
+    if(*str == '\0') {
         return 1;
-}
-    while(str[index] != '\0') {
-        if(!(str[index] >= 'A' && str[index] <= 'Z')) {
+    }
+
+    while(*str != '\0') {
+        if(!(*str >= 'A' && *str <= 'Z')) {
             return 0;
         }
-        index++;
+            str++;
     }
-        return 1;
-}
+            return 1;
+}   
 
 // exercice6
 int     ft_str_is_printable(char *str) {
-        int     index;
-
-    index = 0;
-    if(str[index] == '\0') {
+    if(*str == '\0') {
         return 1;
-}
-    while(str[index] != '\0') {
-        if(!(str[index] >= 32 && str[index] <= 126)) {
+    }
+
+    while(*str != '\0') {
+        if(!(*str >= 32 && *str <= 126)) {
             return 0;
         }
-        index++;
+            str++;
     }
-        return 1;
-}
+            return 1;
+}   
 
 // exercice7
 char    *ft_strupcase(char *str) {
-    int     index;
-
-    index = 0;
-    while(str[index] != '\0') {
-         if(str[index] >= 'a' && str[index] <= 'z') {
-            str[index] = str[index] - ('a'- 'A'); 
+    char    *originalPointer = str;
+    while(*str != '\0') {
+        if(*str >= 'a' && *str <= 'z') {
+            *str = * str - ('a' -'A');
         }
-        index++;
+            str++;
     }
-        return str;
-}   
+        return originalPointer;
+}
 
 // exercice8
 char    *ft_strlowcase(char *str) {
-    int     index;
-
-    index = 0;
-    while(str[index] != '\0') {
-        if(str[index] >= 'A' && str[index] <= 'Z') {
-            str[index] = str[index] + ('a' - 'A');
+    char    *originalPointer = str;
+    while(*str != '\0') {
+        if(*str >= 'A' && *str <= 'Z') {
+            *str = *str + ('a' - 'A');
+        }
+            str++;
     }
-        index++;
-    }
-    return str;
+            return originalPointer;
 }
 
 // exercice 9
 char    *ft_strcapitalize(char *str) {
-    int     index;
     int     count;
+    char    *originalStr;
 
-    index = 0;
     count = 1;
-    while(str[index] != '\0') {
-            // printf("index: %d, char: '%c', count: %d\n", index, str[index], count);
-        
-        if(count && (str[index] >= 'a' && str[index] <= 'z')) {
-            // printf("  - Capitalizing '%c'\n", str[index]);
-            str[index] = str[index] - ('a'- 'A'); 
+    originalStr = str;
+    while(*str != '\0') {
+    // printf("CHECK -- count:%d, str:%c\n", count, *str);    
+        if(count && (*str >= 'a' && *str <= 'z')) {
+            *str = *str - ('a'- 'A');  
             count = 0;
-        }   
-        else if (!count && (str[index] >= 'A' && str[index] <= 'Z')) {
-            // printf("  - Lowercasing '%c'\n", str[index]);
-            str[index] = str[index] + ('a' - 'A');
+        } else if (!count && (*str >= 'A' && *str <= 'Z'))  {
+            *str = *str + ('a' - 'A');
         }
 
-        if(!(str[index] >= 'a' && str[index] <= 'z') && !(str[index] >= 'A' && str[index] <= 'Z')) {
-            // printf("  - Found separator: '%c', count reset\n", str[index]);
+          if(!(*str >= 'a' && *str <= 'z') && !(*str >= 'A' && *str <= 'Z')) {
             count = 1;
-    }
-            // printf("  Updated string: %s\n", str);
-            index++; 
+          } 
+          str++;
+         
         }
-        return str;
+        
+        return originalStr;
+         
     }
 
     // exercice 10
     unsigned int ft_strlcpy(char *dest, char *src, unsigned int size) {
-        // retourner la longueur de la chaine
-        unsigned int     length;
-        unsigned int     index;
+    unsigned int length = 0;
+    char *src_ptr = src;  // Pointeur pour parcourir la chaîne source
+    char *dest_ptr = dest;  // Pointeur pour parcourir la chaîne destination
 
-        length = 0;
-        index = 0;
-
-         while(src[length] != '\0') {
-            length++;
-        }
-
-          // Si size == 0, on ne copie rien, mais on retourne la longueur de la chaîne source
-        if (size == 0) {
-            return length;
-        }
-
-        while(src[index] != '\0' && index < size - 1) {
-            dest[index] = src[index];
-            index ++;
-        }
-
-        dest[index] = '\0';
-
-      
-        return length;
-
+    // Calculer la longueur de la chaîne source
+    while (*src_ptr != '\0') {
+        length++;
+        src_ptr++;
     }
 
-            
+    // Si size == 0, on ne copie rien et on retourne la longueur de la chaîne source
+    if (size == 0) {
+        return length;
+    }
+
+    // Réinitialiser le pointeur dest pour la copie
+    src_ptr = src;
+
+    // Copier les caractères de src vers dest jusqu'à size - 1
+    while (*src_ptr != '\0' && size > 1) {
+        *dest_ptr = *src_ptr;
+        dest_ptr++;
+        src_ptr++;
+        size--;
+    }
+
+    // Ajouter le caractère nul de fin à dest
+    *dest_ptr = '\0';
+
+    // Retourner la longueur de la chaîne source
+    return length;
+}
 
 
-// -------------------------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 int     main(void) {
     // exercice0
@@ -260,18 +248,6 @@ int     main(void) {
     printf("C7:%d\n", resultatCall2);
     printf("C8:%d\n", resultatCall3);
 
-    // exercice3
-    printf("exercice3\n");
-    char    chaine9[] = "345"; 
-    char    chaine10[] = "h3llo"; 
-    char    chaine11[] = "";
-    int     resultatCall4 = ft_str_is_numeric(chaine9);
-    int     resultatCall5 = ft_str_is_numeric(chaine10);
-    int     resultatCall6 = ft_str_is_numeric(chaine11);
-    printf("C9:%d\n", resultatCall4);
-    printf("C10:%d\n", resultatCall5);
-    printf("C11:%d\n", resultatCall6);
-
     // exercice4
     printf("exercice4\n");
     char    chaine12[] = "b345T"; 
@@ -297,7 +273,7 @@ int     main(void) {
     printf("C17:%d\n", resultatCall12);
 
     // exercice6
-    printf("exercice6\n");
+    printf("exercice5\n");
     char    chaine18[] = "b34\t5T"; 
     char    chaine19[] = "HELLO"; 
     char    chaine20[] = "";
@@ -320,7 +296,7 @@ int     main(void) {
     printf("C22:%s\n", chaine22);
     printf("C23:%s\n", chaine23);
 
-     // exercice8
+    // exercice8
     printf("exercice8\n");
     char    chaine24[] = "b34\t5T"; 
     char    chaine25[] = "HellO"; 
@@ -341,21 +317,19 @@ int     main(void) {
 
     // exercice10
     printf("exercice10\n");
-    char    chaine28[30] = "";
-    char    chaine29[] = "Copie moi dans la destination meme si je suis trop longue";
+    char chaine28[30] = "";  // Chaîne de destination vide
+    char chaine29[] = "Copie moi dans la destination meme si je suis trop longue";  // Chaîne source
+    unsigned int size = 14;  // Taille maximum de la copie (y compris le caractère nul)
     int     retourFt = ft_strlcpy(chaine28, chaine29, 14);
-    unsigned int size = 14;
-    printf("C28 avant:%s C29 avant:%s\n", chaine28, chaine29);
-    ft_strlcpy(chaine28, chaine29, 14);
-    printf("C28 après:%s C29 après:%s\n", chaine28, chaine29);
+    // Affichage avant la copie
+    printf("C28 avant: '%s' C29 avant: '%s'\n", chaine28, chaine29);
+    // Appel à ft_strlcpy
+    ft_strlcpy(chaine28, chaine29, size);
+    // Affichage après la copie
+    printf("C28 après: '%s' C29 après: '%s'\n", chaine28, chaine29);
     printf("Longueur SRC : %d", retourFt);
 
-
-
-    // ------------------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------------
     return 0;
-    
 
 }
-
-
