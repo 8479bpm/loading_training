@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int ft_iterative_factorial(int nb) {
+/* int ft_iterative_factorial(int nb) {
     if (nb < 0) {
         return 0;  // Si nb est négatif, on renvoie 0
     }
@@ -16,6 +16,35 @@ int ft_iterative_factorial(int nb) {
 
     return fac;
 }
+
+
+
+ */
+
+
+
+
+
+
+
+
+int ft_iterative_factorial(int nb) {
+    int resultat = 1;
+    int index = 1;
+
+    if (nb < 0) {
+        return 0;
+    }
+
+    while (index <= nb) {
+        resultat *= index;
+        index++;
+    }
+        return resultat;
+}    
+
+
+
 
 int main(void) {
     int test1 = 0;  // Test avec 0, la factorielle de 0 est 1

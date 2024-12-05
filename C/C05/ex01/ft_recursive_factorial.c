@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int ft_recursive_factorial(int nb) {
+/* int ft_recursive_factorial(int nb) {
     if (nb < 0) {
         return 0;  // Si nb est négatif, la factorielle n'est pas définie, on retourne 0
     }
@@ -8,7 +8,33 @@ int ft_recursive_factorial(int nb) {
         return 1;  // Cas de base : 0! = 1 et 1! = 1
     }
     return nb * ft_recursive_factorial(nb - 1);  // Appel récursif pour (nb-1)!
-}
+} */
+
+
+
+
+int     ft_recursive_factorial(int nb) {
+    if (nb < 0) {
+        return 0;
+    } else if (nb == 0) {
+        return 1;
+    } else {
+        return nb * ft_recursive_factorial(nb - 1);
+    }
+    
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
 
 int main(void) {
     int test1 = 0;
