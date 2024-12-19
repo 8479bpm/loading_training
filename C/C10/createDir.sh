@@ -1,6 +1,6 @@
 #!/bin/bash
 
-N=3
+N=4
 
 # Boucle pour créer les dossiers ex00, ex01, ex02, ..., ex09
 for ((i = 0; i < N; i++)); do
