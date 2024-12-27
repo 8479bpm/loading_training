@@ -1,0 +1,56 @@
+#include <unistd.h>
+#include <fcntl.h>
+
+int	print_error(char *message)
+{
+	write(2, message, 20);
+	return (1);
+}
+
+int	open_file(char *filename)
+{
+	int	fd;
+
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+	{
+		print_error("Cannot read file.\n");
+	}
+	return (fd);
+}
+
+void	read_and_print_file(int fd)
+{
+	char	buffer[128];
+	int		bytes_read;
+
+	bytes_read = read(fd, buffer, sizeof(buffer));
+	while (bytes_read > 0)
+	{
+		write(1, buffer, bytes_read);
+	}
+}
+
+int	main(int argc, char *argv[])
+{
+	int	fd;
+
+	if (argc < 2)
+	{
+		print_error("Files name missing.\n");
+		return (1);
+	}
+	if (argc > 2)
+	{
+		print_error("Too many arguments.\n");
+		return (1);
+	}
+	fd = open_file(argv[1]);
+	if (fd < 0)
+	{
+		return (1);
+	}
+	read_and_print_file(fd);
+	close(fd);
+	return (0);
+}
