@@ -1,45 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_is_negative.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: 8479bpm <8479bpm@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 17:53:53 by 8479bpm           #+#    #+#             */
-/*   Updated: 2025/01/02 17:53:55 by 8479bpm          ###   ########.fr       */
+/*   Created: 2024/12/28 16:32:36 by 8479bpm           #+#    #+#             */
+/*   Updated: 2024/12/28 16:43:30 by 8479bpm          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
 
-int	ft_str_is_alpha(char *str)
+#include <unistd.h>
+
+void	ft_is_negative(int n)
 {
-	int	index;
-
-	index = 0;
-	if (str[0] == '\0')
+	if (n < 0)
 	{
-		return (1);
+		write(1, "N", 1);
 	}
-	while (str[index] != '\0')
+	else
 	{
-		if (!(str[index] >= 'a' && str[index] <= 'z')
-		|| !(str[index] >= 'A' && str[index] <= 'Z'))
-		{
-			return (0);
-		}
-		index++;
+		write(1, "P", 2);
 	}
-	return (1);
 }
 /*
 int	main(void)
 {
-	char	*string1;
-	int		is_alpha;
+	int	test1;
+	int	test2;
+	int	test3;
 
-	string1 = "ZERfbfg@!:\ndthh";
-	is_alpha = ft_str_is_alpha(string1);
-	printf("is alpha ?: %d \n", is_alpha);
+	test1 = -76754;
+	test2 = 2578;
+	test3 = 0;
+	ft_is_negative(test1);
+	write(1, "\n", 1);
+	ft_is_negative(test2);
+	write(1, "\n", 1);
+	ft_is_negative(test3);
+	write(1, "\n", 1);
 	return (0);
 }
 */

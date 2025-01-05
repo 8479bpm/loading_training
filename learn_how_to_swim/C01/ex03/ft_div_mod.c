@@ -1,45 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_div_mod.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: 8479bpm <8479bpm@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 17:53:53 by 8479bpm           #+#    #+#             */
-/*   Updated: 2025/01/02 17:53:55 by 8479bpm          ###   ########.fr       */
+/*   Created: 2024/12/31 16:12:13 by 8479bpm           #+#    #+#             */
+/*   Updated: 2024/12/31 16:12:16 by 8479bpm          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <stdio.h>
 
-int	ft_str_is_alpha(char *str)
+void	ft_div_mod(int a, int b, int *div, int *mod)
 {
-	int	index;
-
-	index = 0;
-	if (str[0] == '\0')
-	{
-		return (1);
-	}
-	while (str[index] != '\0')
-	{
-		if (!(str[index] >= 'a' && str[index] <= 'z')
-		|| !(str[index] >= 'A' && str[index] <= 'Z'))
-		{
-			return (0);
-		}
-		index++;
-	}
-	return (1);
+	*div = a / b;
+	*mod = a % b;
 }
 /*
 int	main(void)
 {
-	char	*string1;
-	int		is_alpha;
+	int test1 = 6;
+	int test2 = 3;
+	int division;
+	int modulo;
 
-	string1 = "ZERfbfg@!:\ndthh";
-	is_alpha = ft_str_is_alpha(string1);
-	printf("is alpha ?: %d \n", is_alpha);
+	ft_div_mod(test1, test2, &division, &modulo);
+	printf("division: %d, modulo: %d", division, modulo);
 	return (0);
 }
 */

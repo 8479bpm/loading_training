@@ -1,45 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: 8479bpm <8479bpm@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 17:53:53 by 8479bpm           #+#    #+#             */
-/*   Updated: 2025/01/02 17:53:55 by 8479bpm          ###   ########.fr       */
+/*   Created: 2025/01/04 15:00:06 by 8479bpm           #+#    #+#             */
+/*   Updated: 2025/01/04 15:00:08 by 8479bpm          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <stdio.h>
 
-int	ft_str_is_alpha(char *str)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	int	index;
+	unsigned int	index;
 
 	index = 0;
-	if (str[0] == '\0')
+	while (index < n && s1[index] != '\0' && s2[index] != '\0')
 	{
-		return (1);
-	}
-	while (str[index] != '\0')
-	{
-		if (!(str[index] >= 'a' && str[index] <= 'z')
-		|| !(str[index] >= 'A' && str[index] <= 'Z'))
+		if (s1[index] != s2[index])
 		{
-			return (0);
+			return ((unsigned char)s1[index] - (unsigned char)s2[index]);
 		}
 		index++;
 	}
-	return (1);
+	return ((unsigned char)s1[index] - (unsigned char)s2[index]);
 }
 /*
 int	main(void)
 {
-	char	*string1;
-	int		is_alpha;
+	int	result;
 
-	string1 = "ZERfbfg@!:\ndthh";
-	is_alpha = ft_str_is_alpha(string1);
-	printf("is alpha ?: %d \n", is_alpha);
+	char	string1[] = "Hello World";
+	char	string2[] = "Hello World";
+	result = ft_strncmp(string1, string2, 16);
+	printf("%d", result);
 	return (0);
 }
 */

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: 8479bpm <8479bpm@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 17:53:53 by 8479bpm           #+#    #+#             */
-/*   Updated: 2025/01/02 17:53:55 by 8479bpm          ###   ########.fr       */
+/*   Created: 2025/01/02 21:35:59 by 8479bpm           #+#    #+#             */
+/*   Updated: 2025/01/02 21:36:02 by 8479bpm          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 
-int	ft_str_is_alpha(char *str)
+int	ft_str_is_numeric(char *str)
 {
 	int	index;
 
@@ -22,8 +22,7 @@ int	ft_str_is_alpha(char *str)
 	}
 	while (str[index] != '\0')
 	{
-		if (!(str[index] >= 'a' && str[index] <= 'z')
-		|| !(str[index] >= 'A' && str[index] <= 'Z'))
+		if (str[index] < '0' || str[index] > '9')
 		{
 			return (0);
 		}
@@ -35,11 +34,11 @@ int	ft_str_is_alpha(char *str)
 int	main(void)
 {
 	char	*string1;
-	int		is_alpha;
+	int		is_num;
 
-	string1 = "ZERfbfg@!:\ndthh";
-	is_alpha = ft_str_is_alpha(string1);
-	printf("is alpha ?: %d \n", is_alpha);
+	string1 = "6444444444444444444";
+	is_num = ft_str_is_numeric(string1);
+	printf("is num ? %d \n", is_num);
 	return (0);
 }
 */

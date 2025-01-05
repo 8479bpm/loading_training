@@ -1,45 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: 8479bpm <8479bpm@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 17:53:53 by 8479bpm           #+#    #+#             */
-/*   Updated: 2025/01/02 17:53:55 by 8479bpm          ###   ########.fr       */
+/*   Created: 2025/01/05 10:21:05 by 8479bpm           #+#    #+#             */
+/*   Updated: 2025/01/05 10:21:12 by 8479bpm          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 
-int	ft_str_is_alpha(char *str)
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	int	index;
-
-	index = 0;
-	if (str[0] == '\0')
+	while (*dest != '\0')
 	{
-		return (1);
+		dest++;
 	}
-	while (str[index] != '\0')
+	while (0 < nb && *src)
 	{
-		if (!(str[index] >= 'a' && str[index] <= 'z')
-		|| !(str[index] >= 'A' && str[index] <= 'Z'))
-		{
-			return (0);
-		}
-		index++;
+		*dest = *src;
+		dest++;
+		src++;
+		nb--;
 	}
-	return (1);
+	*dest = '\0';
+	return (dest);
 }
 /*
 int	main(void)
 {
-	char	*string1;
-	int		is_alpha;
+	char	string_src[] = "copy me at the end of dest";
+	char	string_dest[200] = "I'm the first string and I'm next to : "; 
 
-	string1 = "ZERfbfg@!:\ndthh";
-	is_alpha = ft_str_is_alpha(string1);
-	printf("is alpha ?: %d \n", is_alpha);
+	ft_strncat(string_dest, string_src, 22);
+	printf("%s", string_dest);
 	return (0);
 }
 */

@@ -1,45 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_print_reverse_alphabet.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: 8479bpm <8479bpm@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 17:53:53 by 8479bpm           #+#    #+#             */
-/*   Updated: 2025/01/02 17:53:55 by 8479bpm          ###   ########.fr       */
+/*   Created: 2024/12/28 16:13:03 by 8479bpm           #+#    #+#             */
+/*   Updated: 2024/12/28 16:18:38 by 8479bpm          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
 
-int	ft_str_is_alpha(char *str)
+#include <unistd.h>
+
+void	ft_print_reverse_alphabet(void)
 {
 	int	index;
 
-	index = 0;
-	if (str[0] == '\0')
+	index = 122;
+	while (index <= 122 && index >= 97)
 	{
-		return (1);
+		write(1, &index, 1);
+		index--;
 	}
-	while (str[index] != '\0')
-	{
-		if (!(str[index] >= 'a' && str[index] <= 'z')
-		|| !(str[index] >= 'A' && str[index] <= 'Z'))
-		{
-			return (0);
-		}
-		index++;
-	}
-	return (1);
 }
 /*
 int	main(void)
 {
-	char	*string1;
-	int		is_alpha;
-
-	string1 = "ZERfbfg@!:\ndthh";
-	is_alpha = ft_str_is_alpha(string1);
-	printf("is alpha ?: %d \n", is_alpha);
+	ft_print_reverse_alphabet();
+	write(1, "\n", 1);
 	return (0);
 }
 */

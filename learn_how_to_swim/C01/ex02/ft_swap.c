@@ -1,45 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: 8479bpm <8479bpm@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 17:53:53 by 8479bpm           #+#    #+#             */
-/*   Updated: 2025/01/02 17:53:55 by 8479bpm          ###   ########.fr       */
+/*   Created: 2024/12/30 18:54:32 by 8479bpm           #+#    #+#             */
+/*   Updated: 2024/12/30 18:54:40 by 8479bpm          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <stdio.h>
 
-int	ft_str_is_alpha(char *str)
+void	ft_swap(int *a, int *b)
 {
-	int	index;
+	int	temp;
 
-	index = 0;
-	if (str[0] == '\0')
-	{
-		return (1);
-	}
-	while (str[index] != '\0')
-	{
-		if (!(str[index] >= 'a' && str[index] <= 'z')
-		|| !(str[index] >= 'A' && str[index] <= 'Z'))
-		{
-			return (0);
-		}
-		index++;
-	}
-	return (1);
+	temp = *a;
+	*a = *b;
+	*b = temp;
 }
 /*
 int	main(void)
 {
-	char	*string1;
-	int		is_alpha;
-
-	string1 = "ZERfbfg@!:\ndthh";
-	is_alpha = ft_str_is_alpha(string1);
-	printf("is alpha ?: %d \n", is_alpha);
+	int test1 = 4;
+	int test2 = 5;
+	ft_swap(&test1, &test2);
+	printf("test1: %d, test2: %d", test1, test2);
 	return (0);
 }
 */
