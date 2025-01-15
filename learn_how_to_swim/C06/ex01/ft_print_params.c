@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: 8479bpm <8479bpm@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 10:35:51 by 8479bpm           #+#    #+#             */
-/*   Updated: 2025/01/02 10:35:53 by 8479bpm          ###   ########.fr       */
+/*   Created: 2025/01/14 22:51:42 by 8479bpm           #+#    #+#             */
+/*   Updated: 2025/01/14 22:51:44 by 8479bpm          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+#include <unistd.h>
 
-char	*ft_strcpy(char *dest, char *src)
+int	ft_strlen(char *str)
 {
-	while (*src)
+	int	index;
+
+	index = 0;
+	while (str[index] != '\0')
 	{
-		*dest = *src;
-		src++;
-		dest++;
+		index++;
 	}
-	*dest = '\0';
-	return (dest);
+	return (index);
 }
-/*
-int	main(void)
-{
-	char	*source;
-	char	destination[30];
 
-	source = "copy me into destination";
-	ft_strcpy(destination, source);
-	printf("destination: %s", destination);
-	return (0);
+int	main(int argc, char *argv[])
+{
+	int	index;
+
+	index = 1;
+	if (argc > 1)
+	{
+		while (index < argc)
+		{
+			write(1, argv[index], ft_strlen(argv[index]));
+			write(1, "\n", 1);
+			index++;
+		}
+		return (0);
+	}
 }
-*/

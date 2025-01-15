@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   temp.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: 8479bpm <8479bpm@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 10:35:51 by 8479bpm           #+#    #+#             */
-/*   Updated: 2025/01/02 10:35:53 by 8479bpm          ###   ########.fr       */
+/*   Created: 2025/01/13 16:27:54 by 8479bpm           #+#    #+#             */
+/*   Updated: 2025/01/13 16:27:56 by 8479bpm          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-
-char	*ft_strcpy(char *dest, char *src)
+int	ft_fibonacci(int index)
 {
-	while (*src)
+	if (index < 0)
 	{
-		*dest = *src;
-		src++;
-		dest++;
+		return (-1);
 	}
-	*dest = '\0';
-	return (dest);
+	else if (index == 0)
+	{
+		return (0);
+	}
+	else if (index == 1)
+	{
+		return (1);
+	}
+	else
+	{
+		return (ft_fibonacci(index - 1) + ft_fibonacci(index - 2));
+	}
 }
 /*
 int	main(void)
 {
-	char	*source;
-	char	destination[30];
-
-	source = "copy me into destination";
-	ft_strcpy(destination, source);
-	printf("destination: %s", destination);
+	printf("%d", ft_fibonacci(5));
 	return (0);
 }
 */

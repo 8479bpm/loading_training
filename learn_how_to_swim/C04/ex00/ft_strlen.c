@@ -5,39 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: 8479bpm <8479bpm@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/01 17:42:45 by 8479bpm           #+#    #+#             */
-/*   Updated: 2025/01/01 17:42:48 by 8479bpm          ###   ########.fr       */
+/*   Created: 2025/01/05 14:53:40 by 8479bpm           #+#    #+#             */
+/*   Updated: 2025/01/05 14:53:42 by 8479bpm          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-    int length;
+	int	index;
 
-    length = 0;
-    /* Tant que le pointeur ne pointe pas sur '\0', on incrémente le pointeur */
-    /* Tant que le caractère pointé par str n'est pas '\0' */
-    while (*str != '\0')  
-    {
-        /* On incrémente le compteur de longueur */
-        length++;  
-        /* On passe au caractère suivant */
-        str++;  
-    }
-    /* Retourne la longueur de la chaîne */
-    return length;  
+	index = 0;
+	while (str[index] != '\0')
+	{
+		index++;
+	}
+	return (index);
 }
 /*
 int	main(void)
 {
-	char	*string1;
-	int		test;
+	char str1[] = "dis moi combien je mesure";
+	int result;
 
-	string1 = "je fais 22 caractères";
-	test = ft_strlen(string1);
-	printf("%d", test);
+	result = ft_strlen(str1);
+	printf("%d", result);
 	return (0);
 }
 */
