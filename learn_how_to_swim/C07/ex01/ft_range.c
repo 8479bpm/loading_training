@@ -1,57 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: 8479bpm <8479bpm@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/19 18:23:59 by 8479bpm           #+#    #+#             */
-/*   Updated: 2025/01/19 18:24:01 by 8479bpm          ###   ########.fr       */
+/*   Created: 2025/01/18 16:52:05 by 8479bpm           #+#    #+#             */
+/*   Updated: 2025/01/18 16:52:09 by 8479bpm          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-int	ft_ultimate_range(int **range, int min, int max)
+int	*ft_range(int min, int max)
 {
 	int	tab_size;
+	int	*tab;
 	int	index;
 
 	tab_size = max - min;
-	*range = malloc(sizeof(int) * tab_size);
+	tab = malloc(sizeof(int) * tab_size);
 	index = 0;
 	if (min >= max)
 	{
-		*range = NULL;
-		return (0);
+		return (NULL);
 	}
-	if (*range == NULL)
+	if (tab == NULL)
 	{
-		return (-1);
+		return (NULL);
 	}
 	while (index < tab_size)
 	{
-		(*range)[index] = min + index;
+		tab[index] = min + index;
 		index++;
 	}
-	return (tab_size);
+	return (tab);
 }
 /*
 int	main(void)
 {
-	int *tab;
-	int size = ft_ultimate_range(&tab, 2, 6);
-	int	index2;
+	int *tab = ft_range(3, 8);
+	int	index;
 
-	index2 = 0;
+	index = 0;
 	if (tab != NULL)
 	{
-		while (index2 < 6 - 2)
+		while (index < 8 - 3)
 		{
-			printf("%d", tab[index2]);
-			index2++;
-		}
+			printf("%d", tab[index]);
+			index++;
+		} 
 		free(tab);
 	}
 	else

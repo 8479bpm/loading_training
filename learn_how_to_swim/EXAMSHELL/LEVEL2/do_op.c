@@ -1,6 +1,4 @@
-/* fais moi un cours pour comprendre l'exercice : 
-
-Assignment name  : do_op
+/* Assignment name  : do_op
 Expected files   : *.c, *.h
 Allowed functions: atoi, printf, write
 --------------------------------------------------------------------------------
